@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nama_hotel",
+ "creation": "2023-06-09 09:12:10.756973",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nama_hotel",
+  "alamat",
+  "email",
+  "nomor_telepon",
+  "fasilitas",
+  "bintang"
+ ],
+ "fields": [
+  {
+   "fieldname": "nama_hotel",
+   "fieldtype": "Data",
+   "label": "Nama Hotel",
+   "unique": 1
+  },
+  {
+   "fieldname": "alamat",
+   "fieldtype": "Text",
+   "label": "Alamat"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "nomor_telepon",
+   "fieldtype": "Data",
+   "label": "Nomor Telepon"
+  },
+  {
+   "fieldname": "fasilitas",
+   "fieldtype": "Data",
+   "label": "Fasilitas"
+  },
+  {
+   "fieldname": "bintang",
+   "fieldtype": "Data",
+   "label": "Bintang"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-09 09:51:57.554001",
+ "modified_by": "Administrator",
+ "module": "Bookhotel",
+ "name": "Master Hotel",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "alamat, bintang",
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
