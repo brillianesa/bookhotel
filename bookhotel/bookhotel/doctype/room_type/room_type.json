@@ -12,7 +12,8 @@
   "nomor_kamar",
   "jenis_kamar",
   "fasilitas",
-  "harga"
+  "harga",
+  "status"
  ],
  "fields": [
   {
@@ -48,11 +49,17 @@
    "fieldtype": "Link",
    "label": "Hotel",
    "options": "Master Hotel"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Available\nNot Available"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 09:53:52.071749",
+ "modified": "2023-06-09 10:04:17.236726",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Room Type",
