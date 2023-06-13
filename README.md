@@ -8,7 +8,7 @@ V1. Release
 - Connect Foreign Key
 - Add simple feature : attach image for hotel(but now work at this time)
 
-![Contoh Gambar](https://github.com/brillianesa/bookhotel/blob/rafles_hotel/s.jpg)
+![Contoh Gambar](https://github.com/brillianesa/bookhotel/blob/rafles_hotel/ERD.jpg)
 
 #### License
 
