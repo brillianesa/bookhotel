@@ -1,37 +1,41 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:code_name",
- "creation": "2023-06-07 09:39:14.064283",
+ "creation": "2023-06-12 15:28:31.414993",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "code_name",
-  "discount",
-  "quota"
+  "discount_code",
+  "discount_start",
+  "discount_end",
+  "discount_percentage"
  ],
  "fields": [
   {
-   "fieldname": "code_name",
+   "fieldname": "discount_code",
    "fieldtype": "Data",
-   "label": "Code Name",
-   "unique": 1
+   "label": "Discount Code"
   },
   {
-   "fieldname": "discount",
-   "fieldtype": "Float",
-   "label": "Discount"
+   "fieldname": "discount_start",
+   "fieldtype": "Date",
+   "label": "Discount Start"
   },
   {
-   "fieldname": "quota",
-   "fieldtype": "Int",
-   "label": "Quota"
+   "fieldname": "discount_end",
+   "fieldtype": "Date",
+   "label": "Discount End"
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Percent",
+   "label": "Discount Percentage"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 16:16:56.117708",
+ "modified": "2023-06-13 09:11:58.568691",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Discount Code",

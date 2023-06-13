@@ -1,55 +1,55 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:nama_hotel",
- "creation": "2023-06-09 09:12:10.756973",
+ "autoname": "naming_series:",
+ "creation": "2023-06-12 15:18:04.106021",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "nama_hotel",
-  "alamat",
-  "email",
-  "nomor_telepon",
-  "fasilitas",
-  "bintang"
+  "naming_series",
+  "hotel_name",
+  "hotel_address",
+  "hotel_phone_number",
+  "hotel_email",
+  "hotel_image"
  ],
  "fields": [
   {
-   "fieldname": "nama_hotel",
+   "fieldname": "naming_series",
    "fieldtype": "Data",
-   "label": "Nama Hotel",
-   "unique": 1
+   "hidden": 1,
+   "label": "Naming Series"
   },
   {
-   "fieldname": "alamat",
-   "fieldtype": "Text",
-   "label": "Alamat"
+   "fieldname": "hotel_name",
+   "fieldtype": "Data",
+   "label": "Hotel Name"
   },
   {
-   "fieldname": "email",
+   "fieldname": "hotel_address",
    "fieldtype": "Data",
-   "label": "Email"
+   "label": "Hotel Address"
   },
   {
-   "fieldname": "nomor_telepon",
+   "fieldname": "hotel_phone_number",
    "fieldtype": "Data",
-   "label": "Nomor Telepon"
+   "label": "Hotel Phone Number"
   },
   {
-   "fieldname": "fasilitas",
+   "fieldname": "hotel_email",
    "fieldtype": "Data",
-   "label": "Fasilitas"
+   "label": "Hotel Email"
   },
   {
-   "fieldname": "bintang",
-   "fieldtype": "Data",
-   "label": "Bintang"
+   "fieldname": "hotel_image",
+   "fieldtype": "Attach Image",
+   "label": "Hotel Image"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 09:51:57.554001",
+ "modified": "2023-06-13 09:02:11.756939",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Master Hotel",
@@ -68,7 +68,6 @@
    "write": 1
   }
  ],
- "search_fields": "alamat, bintang",
  "sort_field": "modified",
  "sort_order": "DESC"
 }
