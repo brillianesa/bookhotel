@@ -8,12 +8,34 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "amended_from"
+  "tanggal_pemesanan",
+  "column_break_kzp3w",
+  "tanggal_checkin",
+  "tanggal_checkout",
+  "number_of_days",
+  "section_break_3iauf",
+  "customer",
+  "nama_customer",
+  "nomor_telepon",
+  "email",
+  "section_break_my4cp",
+  "hotel",
+  "room",
+  "jenis_kamar",
+  "nomor_kamar",
+  "fasilitas",
+  "deskripsi",
+  "harga_kamarmalam",
+  "amended_from",
+  "diskon",
+  "total_harga",
+  "status"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "naming_series"
   },
   {
@@ -24,12 +46,127 @@
    "options": "Form Order",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "tanggal_pemesanan",
+   "fieldtype": "Date",
+   "label": "Tanggal Pemesanan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kzp3w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tanggal_checkin",
+   "fieldtype": "Date",
+   "label": "Tanggal Checkin"
+  },
+  {
+   "fieldname": "tanggal_checkout",
+   "fieldtype": "Date",
+   "label": "Tanggal Checkout"
+  },
+  {
+   "fieldname": "section_break_3iauf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Pelanggan ",
+   "options": "Master Customers"
+  },
+  {
+   "fetch_from": "customer.full_name",
+   "fieldname": "nama_customer",
+   "fieldtype": "Data",
+   "label": "Nama Customer"
+  },
+  {
+   "fetch_from": "customer.telephone_number",
+   "fieldname": "nomor_telepon",
+   "fieldtype": "Data",
+   "label": "Nomor Telepon"
+  },
+  {
+   "fetch_from": "customer.email",
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email"
+  },
+  {
+   "fieldname": "section_break_my4cp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "label": "Kamar",
+   "options": "Room Type"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Submitted"
+  },
+  {
+   "fieldname": "hotel",
+   "fieldtype": "Link",
+   "label": "Hotel",
+   "options": "Master Hotel"
+  },
+  {
+   "fetch_from": "room.jenis_kamar",
+   "fieldname": "jenis_kamar",
+   "fieldtype": "Data",
+   "label": "Jenis Kamar"
+  },
+  {
+   "fetch_from": "room.nomor_kamar",
+   "fieldname": "nomor_kamar",
+   "fieldtype": "Data",
+   "label": "Nomor Kamar"
+  },
+  {
+   "fetch_from": "room.harga",
+   "fieldname": "harga_kamarmalam",
+   "fieldtype": "Currency",
+   "label": "Harga Kamar/malam"
+  },
+  {
+   "fieldname": "diskon",
+   "fieldtype": "Data",
+   "label": "Kode Diskon"
+  },
+  {
+   "fieldname": "total_harga",
+   "fieldtype": "Currency",
+   "label": "Total Harga"
+  },
+  {
+   "fetch_from": "room.fasilitas",
+   "fieldname": "fasilitas",
+   "fieldtype": "Data",
+   "label": "Fasilitas"
+  },
+  {
+   "fetch_from": "room.deskripsi",
+   "fieldname": "deskripsi",
+   "fieldtype": "Data",
+   "label": "Deskripsi"
+  },
+  {
+   "fieldname": "number_of_days",
+   "fieldtype": "Int",
+   "label": "Number of Days"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-09 08:52:55.768533",
+ "modified": "2023-06-13 19:29:32.982519",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Form Order",
