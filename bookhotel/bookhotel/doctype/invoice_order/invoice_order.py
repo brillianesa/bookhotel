@@ -7,8 +7,7 @@ from frappe.model.document import Document
 
 class InvoiceOrder(Document):
     def validate(self):
-            if self.status == 'Paid':  
-               
+            if self.status == 'Paid':     
                 discount_code = frappe.get_all(
                     'Discount Code',
                     filters={
@@ -29,7 +28,6 @@ class InvoiceOrder(Document):
                 'Room Booking',
                 filters={
                     'room': self.room,
-                    'customer': self.customer,
                     'check_in_date': ['=', self.tanggal_checkin],
                     'check_out_date': ['=', self.tanggal_checkout],
                     'status': 'Booked'

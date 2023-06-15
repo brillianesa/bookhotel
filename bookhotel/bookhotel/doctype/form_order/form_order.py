@@ -26,7 +26,6 @@ class FormOrder(Document):
             'fasilitas': self.fasilitas,
             'deskripsi': self.deskripsi,
             'harga_kamarmalam': self.harga_kamarmalam,
-            'gambar': self.gambar,
             'diskon': self.diskon,
             'total_harga': self.total_harga,
             'order_id': self.name,
@@ -43,7 +42,6 @@ def check_availability(checkin, checkout, room, customer):
         'Room Booking',
         {
             'room': room,
-            'customer': customer,
             'check_in_date': ['<=', checkout],
             'check_out_date': ['>=', checkin],
             'status': 'Booked'
