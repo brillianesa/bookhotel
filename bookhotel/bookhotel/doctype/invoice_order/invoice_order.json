@@ -2,13 +2,14 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "naming_series:",
- "creation": "2023-06-08 10:48:25.083157",
+ "creation": "2023-06-15 10:08:37.043121",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
   "tanggal_pemesanan",
+  "order_id",
   "column_break_kzp3w",
   "tanggal_checkin",
   "tanggal_checkout",
@@ -28,13 +29,12 @@
   "fasilitas",
   "deskripsi",
   "harga_kamarmalam",
-  "gambar",
-  "amended_from",
   "section_break_fjgij",
   "diskon",
   "total_harga",
   "column_break_rkv0x",
-  "status"
+  "status",
+  "amended_from"
  ],
  "fields": [
   {
@@ -44,19 +44,17 @@
    "label": "naming_series"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Form Order",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "allow_on_submit": 1,
    "fieldname": "tanggal_pemesanan",
    "fieldtype": "Date",
    "label": "Tanggal Pemesanan",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_id",
+   "fieldtype": "Link",
+   "label": "Order ID",
+   "options": "Form Order",
    "read_only": 1
   },
   {
@@ -66,12 +64,20 @@
   {
    "fieldname": "tanggal_checkin",
    "fieldtype": "Date",
-   "label": "Tanggal Checkin"
+   "label": "Tanggal Checkin",
+   "read_only": 1
   },
   {
    "fieldname": "tanggal_checkout",
    "fieldtype": "Date",
-   "label": "Tanggal Checkout"
+   "label": "Tanggal Checkout",
+   "read_only": 1
+  },
+  {
+   "fieldname": "number_of_days",
+   "fieldtype": "Int",
+   "label": "Number of Days",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_3iauf",
@@ -81,19 +87,26 @@
    "fieldname": "customer",
    "fieldtype": "Link",
    "label": "Pelanggan ",
-   "options": "Master Customers"
+   "options": "Master Customers",
+   "read_only": 1
   },
   {
    "fetch_from": "customer.full_name",
    "fieldname": "nama_customer",
    "fieldtype": "Data",
-   "label": "Nama Customer"
+   "label": "Nama Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_s8d93",
+   "fieldtype": "Column Break"
   },
   {
    "fetch_from": "customer.telephone_number",
    "fieldname": "nomor_telepon",
    "fieldtype": "Data",
-   "label": "Nomor Telepon"
+   "label": "Nomor Telepon",
+   "read_only": 1
   },
   {
    "fetch_from": "customer.email",
@@ -106,23 +119,18 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "room",
-   "fieldtype": "Link",
-   "label": "Kamar",
-   "options": "Room Type"
-  },
-  {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Submitted",
-   "read_only": 1
-  },
-  {
    "fieldname": "hotel",
    "fieldtype": "Link",
    "label": "Hotel",
-   "options": "Master Hotel"
+   "options": "Master Hotel",
+   "read_only": 1
+  },
+  {
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "label": "Kamar",
+   "options": "Room Type",
+   "read_only": 1
   },
   {
    "fetch_from": "room.jenis_kamar",
@@ -139,22 +147,8 @@
    "read_only": 1
   },
   {
-   "fetch_from": "room.harga",
-   "fieldname": "harga_kamarmalam",
-   "fieldtype": "Currency",
-   "label": "Harga Kamar/malam",
-   "read_only": 1
-  },
-  {
-   "fieldname": "diskon",
-   "fieldtype": "Data",
-   "label": "Kode Diskon"
-  },
-  {
-   "fieldname": "total_harga",
-   "fieldtype": "Currency",
-   "label": "Total Harga",
-   "read_only": 1
+   "fieldname": "column_break_z6kzx",
+   "fieldtype": "Column Break"
   },
   {
    "fetch_from": "room.fasilitas",
@@ -171,42 +165,56 @@
    "read_only": 1
   },
   {
-   "fieldname": "number_of_days",
-   "fieldtype": "Int",
-   "label": "Number of Days",
+   "fetch_from": "room.harga",
+   "fieldname": "harga_kamarmalam",
+   "fieldtype": "Currency",
+   "label": "Harga Kamar/malam",
    "read_only": 1
-  },
-  {
-   "fieldname": "column_break_s8d93",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_z6kzx",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break_fjgij",
    "fieldtype": "Section Break"
   },
   {
+   "fieldname": "diskon",
+   "fieldtype": "Data",
+   "label": "Kode Diskon",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_harga",
+   "fieldtype": "Currency",
+   "label": "Total Harga",
+   "read_only": 1
+  },
+  {
    "fieldname": "column_break_rkv0x",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "room.gambar",
-   "fieldname": "gambar",
-   "fieldtype": "Attach Image",
-   "label": "Gambar",
+   "default": "Unpaid",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Unpaid\nPaid\nChecked Out"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Invoice Order",
+   "print_hide": 1,
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-15 10:05:01.147024",
+ "modified": "2023-06-15 10:36:39.675897",
  "modified_by": "Administrator",
  "module": "Bookhotel",
- "name": "Form Order",
+ "name": "Invoice Order",
  "owner": "Administrator",
  "permissions": [
   {

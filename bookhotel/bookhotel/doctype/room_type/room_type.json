@@ -12,10 +12,9 @@
   "nomor_kamar",
   "jenis_kamar",
   "fasilitas",
+  "gambar",
   "deskripsi",
-  "harga",
-  "status",
-  "booking_details"
+  "harga"
  ],
  "fields": [
   {
@@ -52,26 +51,19 @@
    "options": "Master Hotel"
   },
   {
-   "fieldname": "status",
-   "fieldtype": "Select",
-   "label": "Status",
-   "options": "Available\nNot Available"
-  },
-  {
    "fieldname": "deskripsi",
    "fieldtype": "Data",
    "label": "Deskripsi"
   },
   {
-   "fieldname": "booking_details",
-   "fieldtype": "Table",
-   "label": "Booking Details",
-   "options": "Booking Details"
+   "fieldname": "gambar",
+   "fieldtype": "Attach Image",
+   "label": "Gambar"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-13 20:10:46.015366",
+ "modified": "2023-06-15 10:34:30.834256",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Room Type",
@@ -91,6 +83,7 @@
    "write": 1
   }
  ],
+ "search_fields": "jenis_kamar, fasilitas",
  "sort_field": "modified",
  "sort_order": "DESC"
 }

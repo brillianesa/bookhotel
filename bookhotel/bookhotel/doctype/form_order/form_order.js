@@ -1,5 +1,6 @@
 // Copyright (c) 2023, Cargoshare and contributors
 // For license information, please see license.txt
+
 function calculateNumberOfDays(frm) {
     var checkInDate = frm.doc.tanggal_checkin;
     var checkOutDate = frm.doc.tanggal_checkout;
@@ -107,7 +108,38 @@ frappe.ui.form.on('Form Order', {
     diskon: function(frm) {
         applyDiscountCode(frm);
     },
-    
+    room: function(frm) {
+		if (frm.doc.gambar) {
+			$(frm.fields_dict['gambar'].wrapper)
+				.html('<img src="'+ frm.doc.gambar +'" style="max-width: 100%;">');
+		} else {
+			$(frm.fields_dict['gambar'].wrapper).html('');
+		}
+	},
+    refresh: function(frm) {
+		if (frm.doc.gambar) {
+			$(frm.fields_dict['gambar'].wrapper)
+				.html('<img src="'+ frm.doc.gambar +'" style="max-width: 100%;">');
+		}
+	},
+    before_submit: function(frm) {
+        frappe.call({
+            method: 'bookhotel.bookhotel.doctype.form_order.form_order.check_availability',
+            args: {
+                checkin: frm.doc.tanggal_checkin,
+                checkout: frm.doc.tanggal_checkout,
+                room: frm.doc.room,
+                customer: frm.doc.customer
+            },
+            async: false,
+            callback: function(r) {
+                if (r.message !== true) {
+                    validated = false;
+                    frappe.msgprint(r.message);
+                }
+            }
+        });
+    }
 	
 	
     
