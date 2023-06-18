@@ -8,23 +8,35 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "full_name"
+  "full_name",
+  "new_user"
  ],
  "fields": [
   {
    "fieldname": "naming_series",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "naming_series"
   },
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Full Name"
+  },
+  {
+   "default": "True",
+   "fieldname": "new_user",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "New User",
+   "options": "True\nFalse",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-07 18:28:42.748023",
+ "modified": "2023-06-18 12:45:36.617612",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Master Customer",

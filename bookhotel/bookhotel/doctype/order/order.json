@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-06-16 18:57:00.140019",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "master_customer",
+  "master_hotel",
+  "room_type",
+  "column_break_hmnvo",
+  "customer",
+  "hotel",
+  "type",
+  "section_break_ok1hl",
+  "check_in",
+  "check_out",
+  "section_break_z2usc",
+  "code",
+  "column_break_auxjh",
+  "price",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "master_customer",
+   "fieldtype": "Link",
+   "label": "Master Customer",
+   "options": "Master Customer"
+  },
+  {
+   "fieldname": "master_hotel",
+   "fieldtype": "Link",
+   "label": "Master Hotel",
+   "options": "Master Hotel"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Link",
+   "label": "Room Type",
+   "options": "Room Type"
+  },
+  {
+   "fetch_from": "master_customer.full_name",
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "master_hotel.nama_hotel",
+   "fieldname": "hotel",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hotel",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_type.jenis_kamar",
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check In"
+  },
+  {
+   "fieldname": "check_out",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check Out"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Order",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Order",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "naming_series"
+  },
+  {
+   "fieldname": "column_break_hmnvo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ok1hl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_z2usc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_auxjh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "room_type.harga",
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Code"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-18 15:59:55.972256",
+ "modified_by": "Administrator",
+ "module": "Bookhotel",
+ "name": "Order",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

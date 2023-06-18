@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestFormOrder(unittest.TestCase):
+class TestOrder(unittest.TestCase):
 	pass

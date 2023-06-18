@@ -9,7 +9,6 @@
  "field_order": [
   "naming_series",
   "hotel",
-  "nomor_kamar",
   "jenis_kamar",
   "fasilitas",
   "harga",
@@ -23,43 +22,42 @@
    "label": "naming series"
   },
   {
-   "fieldname": "nomor_kamar",
-   "fieldtype": "Data",
-   "label": "Nomor Kamar"
-  },
-  {
    "fieldname": "jenis_kamar",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Jenis Kamar",
    "options": "1 King Size Bed\n1 Queen Size Bed\n2 Single Size Bed"
   },
   {
    "fieldname": "fasilitas",
-   "fieldtype": "Table",
-   "label": "Fasilitas",
-   "options": "Fasilitas"
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Fasilitas"
   },
   {
    "fieldname": "harga",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Harga"
   },
   {
    "fieldname": "hotel",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Hotel",
    "options": "Master Hotel"
   },
   {
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Status",
-   "options": "Available\nNot Available"
+   "options": "Available\nUnavailable"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-09 10:04:17.236726",
+ "modified": "2023-06-18 16:45:11.321475",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Room Type",

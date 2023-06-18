@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-06-18 13:17:38.606173",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "master_customer",
+  "master_hotel",
+  "room_type",
+  "column_break_hmnvo",
+  "customer",
+  "hotel",
+  "type",
+  "section_break_ok1hl",
+  "check_in",
+  "check_out",
+  "section_break_z2usc",
+  "price",
+  "column_break_vsich",
+  "status",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "naming_series"
+  },
+  {
+   "fieldname": "master_customer",
+   "fieldtype": "Link",
+   "label": "Master Customer",
+   "options": "Master Customer"
+  },
+  {
+   "fieldname": "master_hotel",
+   "fieldtype": "Link",
+   "label": "Master Hotel",
+   "options": "Master Hotel"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Link",
+   "label": "Room Type",
+   "options": "Room Type"
+  },
+  {
+   "fieldname": "column_break_hmnvo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "master_customer.full_name",
+   "fieldname": "customer",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "master_hotel.nama_hotel",
+   "fieldname": "hotel",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Hotel",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room_type.jenis_kamar",
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Type"
+  },
+  {
+   "fieldname": "section_break_ok1hl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "check_in",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check In"
+  },
+  {
+   "fieldname": "check_out",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check Out"
+  },
+  {
+   "fieldname": "section_break_z2usc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "Unpaid",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Paid\nUnpaid"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Invoice",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Invoice",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "price",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Price"
+  },
+  {
+   "fieldname": "column_break_vsich",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-18 19:20:11.091065",
+ "modified_by": "Administrator",
+ "module": "Bookhotel",
+ "name": "Invoice",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -15,23 +15,26 @@
   {
    "fieldname": "code_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Code Name",
    "unique": 1
   },
   {
    "fieldname": "discount",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Discount"
   },
   {
    "fieldname": "quota",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Quota"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 16:16:56.117708",
+ "modified": "2023-06-18 16:16:56.838318",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Discount Code",
