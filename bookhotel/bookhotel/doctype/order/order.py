@@ -6,7 +6,7 @@ from frappe.model.document import Document
 from frappe.utils import date_diff
 
 class Order(Document):
-	def validate(self):
+	def before_submit(self):
 
 		#Create variables for room, customer, and discount data
 		master_room = frappe.get_doc("Room Type", self.room_type)
@@ -19,18 +19,8 @@ class Order(Document):
 		else:
 			master_discount = frappe.get_doc("Discount Code", self.code)
 			discount = frappe.get_value("Discount Code", self.code, "discount")
-
-			#Update quota if a discount code is used
-			if self.code == "NEWUSER":
-				master_discount.quota = master_discount.quota - 1
-				master_discount.save()
-
-				master_customer.new_user = "False"
-				master_customer.save()
-
-			else:
-				master_discount.quota = master_discount.quota - 1
-				master_discount.save()
+			master_discount.quota = master_discount.quota - 1
+			master_discount.save()
 
 		#Sum final price and book a room
 		if not self.is_new():
@@ -40,6 +30,9 @@ class Order(Document):
 				if master_customer.new_user == "False" and self.code == "NEWUSER":
 					discount = 0
 					frappe.throw(title="Error", msg="Discount code ini hanya berlaku untuk pengguna baru")
+				else:
+					master_customer.new_user = "False"
+					master_customer.save()
 
 				total_discount = self.price * (discount / 100)
 				self.price = (self.price - total_discount) * date_diff(self.check_out, self.check_in)
