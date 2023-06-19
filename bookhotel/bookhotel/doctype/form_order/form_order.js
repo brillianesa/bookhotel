@@ -38,22 +38,51 @@ function applyDiscountCode(frm) {
             method: "frappe.client.get_list",
             args: {
                 doctype: "Discount Code",
-                fields: ["code_name", "discount"],
+                fields: ["code_name", "discount", "discount_start", "discount_end"],
                 filters: { "code_name": discountCode },
                 limit_page_length: 1
             },
             callback: function(r) {
-                console.log(r.message)
-                if (r.message && r.message.length > 0) {
-                    var discount = r.message[0].discount;
-                    console.log("Diskon: " + discount);
-                    calculateTotalHarga(frm, discount);
-                } else {
-                    frappe.msgprint(__("Kode diskon tidak valid."));
-                    frm.set_value('diskon', '');
-                    calculateTotalHarga(frm, 0); 
-                }
-            }
+				console.log(r.message);
+				if (r.message && r.message.length > 0) {
+				  var discountStartDate = new Date(r.message[0].discount_start);
+				  var discountEndDate = new Date(r.message[0].discount_end);
+				  var currentDate= new Date();
+		
+				  if (currentDate < discountStartDate) {
+					frappe.msgprint(__("Kode diskon belum berlaku."));
+					frm.set_value('discount_code', '');
+				  } else if (currentDate >= discountStartDate && currentDate <= discountEndDate) {
+					console.log("Kode diskon valid. Melakukan proses diskon...");
+					if (r.message && r.message.length > 0) {
+						var discount = r.message[0].discount;
+						console.log("Diskon: " + discount);
+						calculateTotalHarga(frm, discount);
+					} else {
+						frappe.msgprint(__("Kode diskon tidak valid."));
+						frm.set_value('diskon', '');
+						calculateTotalHarga(frm, 0); 
+					}
+
+					
+		
+					// var discountPercentage = r.message[0].discount_percentage;
+					// var subtotal = frm.doc.subtotal || 0;
+					// var totalday = frm.doc.total_day || 0;
+					// var totaldayprice = (subtotal * totalday)
+					// var discountAmount = (totaldayprice * discountPercentage) / 100;
+					// var totalHarga = totaldayprice - discountAmount;
+					// frm.set_value('total_price_book', totaldayprice);
+					// frm.set_value('total_harga', totalHarga);
+				  } else {
+					frappe.msgprint(__("Kode diskon telah kedaluwarsa."));
+					frm.set_value('discount_code', '');
+				  }
+				} else {
+				  frappe.msgprint(__("Kode diskon tidak valid."));
+				  frm.set_value('discount_code', '');
+				}
+			}
         });
     } else {
         calculateTotalHarga(frm, 0); 
