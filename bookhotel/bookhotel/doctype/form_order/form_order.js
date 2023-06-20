@@ -31,27 +31,77 @@ function calculateTotalHarga(frm, discount) {
 
 function applyDiscountCode(frm) {
     var discountCode = frm.doc.diskon;
-    console.log("Kode Diskon: " + discountCode);
-
-    if (discountCode) {
+    var isNewCust = frm.doc.isnewcust;
+    if (isNewCust == "True"){
+        if (discountCode == "NEWUSER"){
+            calculateTotalHarga(frm, 30)
+        }
+        else
+            {
+                frappe.call({
+                    method: "frappe.client.get_list",
+                    args: {
+                        doctype: "Discount Code",
+                        filters: {
+                            "code_name": discountCode
+                        },
+                        fields: ["code_name", "discount", "start_date", "end_date"],
+                        limit_page_length: 1
+                    },
+                    callback: function(r) {
+                        console.log(r.message);
+                        if (r.message && r.message.length > 0) {
+                            var discount = r.message[0].discount;
+                            var startDate = r.message[0].start_date;
+                            var endDate = r.message[0].end_date;
+        
+                            var currentDate = frappe.datetime.nowdate();
+                            if (currentDate >= startDate && currentDate <= endDate) {
+                                calculateTotalHarga(frm, discount);
+                            } else {
+                                frappe.msgprint(__("Kode diskon tidak berlaku pada tanggal ini."));
+                                frm.set_value('diskon', '');
+                                calculateTotalHarga(frm, 0);
+                            }
+                        } else {
+                            frappe.msgprint(__("Kode diskon tidak valid."));
+                            frm.set_value('diskon', '');
+                            calculateTotalHarga(frm, 0);
+                        }
+                    }
+                });
+            }  
+    }
+    else if (discountCode) {
         frappe.call({
             method: "frappe.client.get_list",
             args: {
                 doctype: "Discount Code",
-                fields: ["code_name", "discount"],
-                filters: { "code_name": discountCode },
+                filters: {
+                    "code_name": discountCode
+                },
+                fields: ["code_name", "discount", "start_date", "end_date"],
                 limit_page_length: 1
             },
             callback: function(r) {
-                console.log(r.message)
+                console.log(r.message);
                 if (r.message && r.message.length > 0) {
                     var discount = r.message[0].discount;
-                    console.log("Diskon: " + discount);
-                    calculateTotalHarga(frm, discount);
+                    var startDate = r.message[0].start_date;
+                    var endDate = r.message[0].end_date;
+
+                    var currentDate = frappe.datetime.nowdate();
+                    if (currentDate >= startDate && currentDate <= endDate) {
+                        calculateTotalHarga(frm, discount);
+                    } else {
+                        frappe.msgprint(__("Kode diskon tidak berlaku pada tanggal ini."));
+                        frm.set_value('diskon', '');
+                        calculateTotalHarga(frm, 0);
+                    }
                 } else {
                     frappe.msgprint(__("Kode diskon tidak valid."));
                     frm.set_value('diskon', '');
-                    calculateTotalHarga(frm, 0); 
+                    calculateTotalHarga(frm, 0);
                 }
             }
         });

@@ -10,7 +10,8 @@
   "check_in_date",
   "check_out_date",
   "customer",
-  "status"
+  "status",
+  "invoice_id"
  ],
  "fields": [
   {
@@ -40,11 +41,16 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Booked\nChecked Out"
+  },
+  {
+   "fieldname": "invoice_id",
+   "fieldtype": "Data",
+   "label": "Invoice ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-15 11:18:18.859318",
+ "modified": "2023-06-20 11:01:40.942299",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Room Booking",

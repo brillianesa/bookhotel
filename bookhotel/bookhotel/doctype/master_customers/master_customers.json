@@ -10,7 +10,8 @@
   "full_name",
   "address",
   "telephone_number",
-  "email"
+  "email",
+  "isnewcust"
  ],
  "fields": [
   {
@@ -33,11 +34,17 @@
    "fieldname": "email",
    "fieldtype": "Data",
    "label": "Email"
+  },
+  {
+   "fieldname": "isnewcust",
+   "fieldtype": "Data",
+   "label": "IsNewCust",
+   "options": "True\nFalse"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-12 17:14:08.371693",
+ "modified": "2023-06-19 17:34:48.008021",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Master Customers",

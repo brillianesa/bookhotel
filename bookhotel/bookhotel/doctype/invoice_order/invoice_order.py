@@ -7,20 +7,26 @@ from frappe.model.document import Document
 
 class InvoiceOrder(Document):
     def validate(self):
-            if self.status == 'Paid':     
-                discount_code = frappe.get_all(
-                    'Discount Code',
-                    filters={
-                        'code_name': self.diskon,
-					},
-                    fields=['name', 'quota']
-				)
-                if discount_code:
-                    disc_doc = frappe.get_doc('Discount Code', discount_code[0].name)
-                    disc_doc.quota -= 1
-                    disc_doc.save()
-                    
-                frappe.db.commit()
+        if self.status == 'Paid':
+            if self.diskon == 'NEWUSER':
+                frappe.db.set_value('Master Customers', self.customer, 'isnewcust', 'False')
+
+            discount_code = frappe.get_all(
+                'Discount Code',
+                filters={
+                    'code_name': self.diskon,
+                    'quota': ['>', 0]
+                },
+                fields=['name', 'quota']
+            )
+
+            if discount_code:
+                disc_doc = frappe.get_doc('Discount Code', discount_code[0].name)
+                disc_doc.quota -= 1
+                disc_doc.save()
+
+            frappe.db.commit()
+
 
     def on_submit(self):
         if self.status == 'Checked Out': 
@@ -32,12 +38,13 @@ class InvoiceOrder(Document):
                     'check_out_date': ['=', self.tanggal_checkout],
                     'status': 'Booked'
                 },
-                fields=['name', 'status']
+                fields=['name', 'status', 'invoice_id']
             )
 
             if room_booking:
                 booking_doc = frappe.get_doc('Room Booking', room_booking[0].name)
                 booking_doc.status = 'Checked Out'
+                booking_doc.invoice_id = self.name
                 booking_doc.save()
 
             frappe.db.commit()
