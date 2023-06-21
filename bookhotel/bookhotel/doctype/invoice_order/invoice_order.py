@@ -9,7 +9,7 @@ class InvoiceOrder(Document):
     def validate(self):
         if self.status == 'Paid':
             if self.diskon == 'NEWUSER':
-                frappe.db.set_value('Master Customers', self.customer, 'isnewcust', 'False')
+                frappe.db.set_value('Master Customers', self.customer, 'isnewcust', 0)
 
             discount_code = frappe.get_all(
                 'Discount Code',
