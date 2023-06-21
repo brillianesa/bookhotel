@@ -32,7 +32,7 @@ function calculateTotalHarga(frm, discount) {
 function applyDiscountCode(frm) {
     var discountCode = frm.doc.diskon;
     var isNewCust = frm.doc.isnewcust;
-    if (isNewCust == "True"){
+    if (isNewCust == 1){
         if (discountCode == "NEWUSER"){
             calculateTotalHarga(frm, 30)
         }
