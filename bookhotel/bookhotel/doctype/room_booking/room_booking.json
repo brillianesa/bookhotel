@@ -1,11 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2023-06-14 10:51:02.822361",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
   "room",
   "check_in_date",
   "check_out_date",
@@ -46,11 +48,16 @@
    "fieldname": "invoice_id",
    "fieldtype": "Data",
    "label": "Invoice ID"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Naming Series"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-20 11:01:40.942299",
+ "modified": "2023-06-21 09:14:25.649428",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Room Booking",
