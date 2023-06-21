@@ -9,7 +9,9 @@
  "field_order": [
   "code_name",
   "discount",
-  "quota"
+  "quota",
+  "start_date",
+  "end_date"
  ],
  "fields": [
   {
@@ -27,11 +29,21 @@
    "fieldname": "quota",
    "fieldtype": "Int",
    "label": "Quota"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-08 16:16:56.117708",
+ "modified": "2023-06-19 18:20:33.540057",
  "modified_by": "Administrator",
  "module": "Bookhotel",
  "name": "Discount Code",
